@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Zehrat Bladi</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="home.html"><img src="/img/logo.png" alt="Zehrat Bladi Logo"></a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="contact.html" class="active">CONTACT US</a></li>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="products.html">PRODUCTS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="hero-content">
+                <h1>Contact Us</h1>
+                <p>Get in touch for all your floral needs</p>
+            </div>
+        </section>
+
+        <section class="contact-content">
+            <div class="contact-info-section">
+                <h2>Get In Touch</h2>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Visit Our Stores</h3>
+                            <p>Chat with the AI assistant<br>to find the nearest shop’s info.</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Call Us</h3>
+                            <p>(212) 1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email Us</h3>
+                            <p>info@zehratbladi.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Stores Hours</h3>
+                            <p>Chat with the AI assistant<br>to find the nearest shop’s info.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-section">
+                <h2>Send Us a Message</h2>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="occasion">Occasion/Event Type</label>
+                        <select id="occasion" name="occasion">
+                            <option value="">Select an occasion</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="birthday">Birthday</option>
+                            <option value="anniversary">Anniversary</option>
+                            <option value="sympathy">Sympathy</option>
+                            <option value="graduation">Graduation</option>
+                            <option value="corporate">Corporate Event</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your floral needs..." required></textarea>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <span class="checkmark"></span>
+                            Subscribe to our newsletter for special offers and floral tips
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                <div id="form-message" class="form-message"></div>
+            </div>
+
+            <div class="map-section">
+                <h2>Find Us</h2>
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map"></i>
+                        <p>Interactive Map Coming Soon</p>
+                        <p class="address">123 Flower Street, Garden City 90210</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emergency-contact">
+                <h2>Emergency & Same-Day Orders</h2>
+                <p>Need flowers urgently? We offer same-day delivery for orders placed before 2:00 PM. For funeral arrangements and other emergency orders, please call us directly at <strong>(212) 1234-5678</strong>.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-nav">
+            <ul>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="products.html">PRODUCTS</a></li>
+            </ul>
+        </div>
+        <div class="footer-info">
+            <div class="copyright">
+                <p>&copy; 2025 Zehrat Bladi. All Rights Reserved.</p>
+            </div>
+            <div class="contact-info">
+                <p class="address">123 Flower Street, Garden City 90210</p>
+                <p class="phone">(212) 1234-5678</p>
+                <p class="email">info@zehratbladi.com</p>
+            </div>
+        </div>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+    </footer>
+
+    <script src="js/global.js"></script>
+	<script src="js/assistant.js"></script>
+</body>
+</html>

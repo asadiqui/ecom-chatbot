@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Zehrat Bladi</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="home.html"><img src="/img/logo.png" alt="Zehrat Bladi Logo"></a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="products.html">PRODUCTS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="error-main">
+        <section class="error-hero">
+            <div class="error-content">
+                <div class="error-visual">
+                    <div class="error-number">
+                        <span class="four">4</span>
+                        <div class="flower-zero">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <span class="four">4</span>
+                    </div>
+                    <div class="floating-petals">
+                        <div class="petal petal-1">🌸</div>
+                        <div class="petal petal-2">🌺</div>
+                        <div class="petal petal-3">🌼</div>
+                        <div class="petal petal-4">🌻</div>
+                        <div class="petal petal-5">🌷</div>
+                        <div class="petal petal-6">🌹</div>
+                    </div>
+                </div>
+                
+                <div class="error-text">
+                    <h1>Oops! This Flower Has Wilted</h1>
+                    <p class="error-subtitle">The page you're looking for seems to have been picked by someone else.</p>
+                    <p class="error-description">Don't worry though - our garden is full of beautiful alternatives!</p>
+                </div>
+
+                <div class="error-actions">
+                    <a href="home.html" class="btn-primary">
+                        <i class="fas fa-home"></i>
+                        Back to Garden
+                    </a>
+                    <a href="products.html" class="btn-secondary">
+                        <i class="fas fa-leaf"></i>
+                        Browse Flowers
+                    </a>
+                </div>
+
+                <!-- Search functionality -->
+                <div class="error-search">
+                    <h3>Looking for something specific?</h3>
+                    <div class="search-box">
+                        <input type="text" id="errorSearch" placeholder="Search our flower collection...">
+                        <button type="button" onclick="performSearch()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick links -->
+                <div class="quick-links">
+                    <h3>Popular Pages</h3>
+                    <div class="link-grid">
+                        <a href="products.html" class="quick-link">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>All Products</span>
+                        </a>
+                        <a href="contact.html" class="quick-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>Contact Us</span>
+                        </a>
+                        <a href="about.html" class="quick-link">
+                            <i class="fas fa-info-circle"></i>
+                            <span>About Us</span>
+                        </a>
+                        <a href="products.html?occasion=wedding" class="quick-link">
+                            <i class="fas fa-heart"></i>
+                            <span>Wedding Flowers</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured products section for 404 page -->
+        <section class="error-suggestions">
+            <div class="suggestions-content">
+                <h2>While You're Here, Check These Out</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="img/Birth-of-Paradise.jpg" alt="Birth of Paradise Bouquet">
+                        </div>
+                        <h3>Birth of Paradise</h3>
+                        <p class="price">$44.99</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="img/Birthday-Cheers.jpg" alt="Birthday Cheers Florals">
+                        </div>
+                        <h3>Birthday Cheers</h3>
+                        <p class="price">$49.99</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="img/Birthday-Romance.jpg" alt="Birthday Romance Bouquet">
+                        </div>
+                        <h3>Birthday Romance</h3>
+                        <p class="price">$54.99</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-nav">
+            <ul>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="products.html">PRODUCTS</a></li>
+            </ul>
+        </div>
+        <div class="footer-info">
+            <div class="copyright">
+                <p>&copy; 2025 Zehrat Bladi. All Rights Reserved.</p>
+            </div>
+            <div class="contact-info">
+                <p class="address">123 Flower Street, Garden City 90210</p>
+                <p class="phone">(212) 1234-5678</p>
+                <p class="email">info@zehratbladi.com</p>
+            </div>
+        </div>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+    </footer>
+
+    <script src="js/global.js"></script>
+	<script src="js/assistant.js"></script>
+    <script>
+        // Simple search functionality for 404 page
+        function performSearch() {
+            const searchTerm = document.getElementById('errorSearch').value.trim();
+            if (searchTerm) {
+                // In a real application, you would implement actual search
+                // For now, redirect to products page with search parameter
+                window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
+            }
+        }
+        
+        // Allow search on Enter key
+        document.getElementById('errorSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        
+        // Initialize floating petals animation
+        function initFloatingPetals() {
+            const petals = document.querySelectorAll('.petal');
+            petals.forEach((petal, index) => {
+                // Random animation delay
+                petal.style.animationDelay = (index * 0.5) + 's';
+                
+                // Random horizontal position
+                petal.style.left = Math.random() * 100 + '%';
+            });
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initFloatingPetals);
+    </script>
+</body>
+</html>
