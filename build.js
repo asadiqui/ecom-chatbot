@@ -45,7 +45,11 @@ function copyRecursive(src, dest) {
 
 // Files and folders to copy
 const itemsToCopy = [
-  'html',
+  'home.html',
+  'products.html',
+  'contact.html',
+  'about.html',
+  '404.html',
   'css', 
   'js',
   'img',
