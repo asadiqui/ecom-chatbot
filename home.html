@@ -4,135 +4,234 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zehrat Bladi - Premium Flower Shop</title>
-    <link rel="stylesheet" href="/css/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
-<body>
-    <header>
-        <div class="logo">
-            <a href="home.html"><img src="/img/logo.png" alt="Zehrat Bladi Logo"></a>
+<body class="bg-cream text-gray-800 font-inter">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="logo">
+                    <a href="home.html" class="flex items-center">
+                        <div class="w-12 h-12 bg-forest-green rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-seedling text-cream text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-forest-green">Zehrat Bladi</span>
+                    </a>
+                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="about.html" class="text-gray-700 hover:text-forest-green transition-colors duration-300 font-medium">ABOUT US</a></li>
+                        <li><a href="contact.html" class="text-gray-700 hover:text-forest-green transition-colors duration-300 font-medium">CONTACT US</a></li>
+                        <li><a href="home.html" class="text-forest-green font-semibold border-b-2 border-forest-green pb-1">HOME</a></li>
+                        <li><a href="products.html" class="text-gray-700 hover:text-forest-green transition-colors duration-300 font-medium">PRODUCTS</a></li>
+                    </ul>
+                </nav>
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors relative z-50">
+                    <i id="hamburger-icon" class="fas fa-bars text-forest-green text-xl"></i>
+                    <i id="close-icon" class="fas fa-times text-forest-green text-xl hidden"></i>
+                </button>
+            </div>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="about.html">ABOUT US</a></li>
-                <li><a href="contact.html">CONTACT US</a></li>
-                <li><a href="home.html" class="active">HOME</a></li>
-                <li><a href="products.html">PRODUCTS</a></li>
-            </ul>
-        </nav>
+		<!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-white transform translate-x-full transition-transform duration-300 ease-in-out z-40">
+            <div class="pt-20 px-4">
+                <nav>
+                    <ul class="space-y-6">
+                        <li><a href="home.html" class="block text-forest-green font-semibold text-lg py-3 border-b border-gray-200">HOME</a></li>
+                        <li><a href="about.html" class="block text-gray-700 hover:text-forest-green transition-colors duration-300 font-medium text-lg py-3 border-b border-gray-200">ABOUT US</a></li>
+                        <li><a href="contact.html" class="block text-gray-700 hover:text-forest-green transition-colors duration-300 font-medium text-lg py-3 border-b border-gray-200">CONTACT US</a></li>
+                        <li><a href="products.html" class="block text-gray-700 hover:text-forest-green transition-colors duration-300 font-medium text-lg py-3 border-b border-gray-200">PRODUCTS</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-black bg-opacity-50 hidden z-30"></div>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="slider">
-				<div class="slide current">
-					<img src="/img/slide-1.jpg" alt="Beautiful Flower Arrangement">
-					<div class="content">
-						<h1>Welcome to Zehrat Bladi</h1>
-						<p>Exquisite floral arrangements for every occasion</p>
-						<button class="shop-now">Shop Now</button>
-					</div>
-				</div>
-				<div class="slide">
-					<img src="/img/slide-2.jpg" alt="Wedding Flowers">
-					<div class="content">
-						<h1>Wedding Specials</h1>
-						<p>Make your special day unforgettable</p>
-						<button class="shop-now wedding">View Collections</button>
-					</div>
-				</div>
-				<div class="slide">
-					<img src="/img/slide-3.jpg" alt="Seasonal Bouquets">
-					<div class="content">
-						<h1>Seasonal Selections</h1>
-						<p>Fresh and vibrant flowers of the season</p>
-						<button class="shop-now">Explore</button>
-					</div>
-				</div>
-				<div class="buttons">
-					<button id="prev"><i class="fas fa-arrow-left"></i></button>
-					<button id="next"><i class="fas fa-arrow-right"></i></button>
-				</div>
-			</div>
-
-            <div class="featured-product">
-				<div class="hot-sticker">Hot</div>
-                <div class="product-image">
-                    <img src="/img/All-You-Need-is-Love.jpg" alt="All You Need is Love Bouquet">
+        <!-- Hero Section -->
+        <section class="relative h-screen overflow-hidden">
+            <div class="slider relative w-full h-full">
+                <div class="slide current absolute inset-0">
+                    <div class="absolute inset-0 bg-gradient-to-r from-forest-green/70 via-transparent to-burnt-orange/50"></div>
+                    <img src="/img/slide-1.jpg" alt="Beautiful Flower Arrangement" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center text-center">
+                        <div class="max-w-4xl px-6">
+                            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">Welcome to Zehrat Bladi</h1>
+                            <p class="text-xl md:text-2xl text-cream mb-8 font-light">Exquisite floral arrangements for every occasion</p>
+                            <button class="shop-now bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                Shop Now
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <h3>All You Need is Love</h3>
-                <p class="price">$39.99</p>
-                <button class="add-to-cart">Add to Cart</button>
+                <div class="slide absolute inset-0 opacity-0">
+                    <div class="absolute inset-0 bg-gradient-to-r from-forest-green/70 via-transparent to-burnt-orange/50"></div>
+                    <img src="/img/slide-2.jpg" alt="Wedding Flowers" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center text-center">
+                        <div class="max-w-4xl px-6">
+                            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">Wedding Specials</h1>
+                            <p class="text-xl md:text-2xl text-cream mb-8 font-light">Make your special day unforgettable</p>
+                            <button class="shop-now wedding bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                View Collections
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide absolute inset-0 opacity-0">
+                    <div class="absolute inset-0 bg-gradient-to-r from-forest-green/70 via-transparent to-burnt-orange/50"></div>
+                    <img src="/img/slide-3.jpg" alt="Seasonal Bouquets" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center text-center">
+                        <div class="max-w-4xl px-6">
+                            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">Seasonal Selections</h1>
+                            <p class="text-xl md:text-2xl text-cream mb-8 font-light">Fresh and vibrant flowers of the season</p>
+                            <button class="shop-now bg-burnt-orange hover:bg-burnt-orange/90 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                Explore
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-4">
+                    <button id="prev" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button id="next" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Featured Product Card -->
+            <div class="featured-product absolute top-1/2 right-8 transform -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-6 max-w-sm hidden lg:block">
+                <div class="hot-sticker absolute -top-3 -right-3 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                    Hot
+                </div>
+                <div class="product-image mb-4 overflow-hidden rounded-xl">
+                    <img src="/img/All-You-Need-is-Love.jpg" alt="All You Need is Love Bouquet" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <h3 class="text-xl font-semibold text-forest-green mb-2">All You Need is Love</h3>
+                <p class="price text-2xl font-bold text-burnt-orange mb-4">$39.99</p>
+                <button class="add-to-cart w-full bg-forest-green hover:bg-forest-green/90 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                    Add to Cart
+                </button>
             </div>
         </section>
 
-        <section class="new-products">
-            <h2>NEW PRODUCTS</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/img/Wedding-Day-Florals.jpg" alt="Wedding Day Florals Bouquet">
+        <!-- New Products Section -->
+        <section class="new-products py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl md:text-5xl font-bold text-center text-forest-green mb-16">NEW PRODUCTS</h2>
+                <div class="product-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="product-card bg-cream rounded-2xl shadow-lg overflow-hidden product-card-hover">
+                        <div class="product-image overflow-hidden">
+                            <img src="/img/Wedding-Day-Florals.jpg" alt="Wedding Day Florals Bouquet" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-forest-green mb-3">Wedding Day Florals</h3>
+                            <p class="price text-2xl font-bold text-burnt-orange mb-4">$84.99</p>
+                            <button class="add-to-cart w-full bg-forest-green hover:bg-forest-green/90 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                                Add to Cart
+                            </button>
+                        </div>
                     </div>
-                    <h3>Wedding Day Florals</h3>
-                    <p class="price">$84.99</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/img/Way-to-go-Man.jpg" alt="Way to go Man Bouquet">
+                    <div class="product-card bg-cream rounded-2xl shadow-lg overflow-hidden product-card-hover">
+                        <div class="product-image overflow-hidden">
+                            <img src="/img/Way-to-go-Man.jpg" alt="Way to go Man Bouquet" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-forest-green mb-3">Way to go Man</h3>
+                            <p class="price text-2xl font-bold text-burnt-orange mb-4">$119.99</p>
+                            <button class="add-to-cart w-full bg-forest-green hover:bg-forest-green/90 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                                Add to Cart
+                            </button>
+                        </div>
                     </div>
-                    <h3>Way to go Man</h3>
-                    <p class="price">$119.99</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/img/Prickly-Pear-Cactus.jpg" alt="Prickly Pear Cactus Bouquet">
+                    <div class="product-card bg-cream rounded-2xl shadow-lg overflow-hidden product-card-hover">
+                        <div class="product-image overflow-hidden">
+                            <img src="/img/Prickly-Pear-Cactus.jpg" alt="Prickly Pear Cactus Bouquet" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-forest-green mb-3">Prickly Pear Cactus</h3>
+                            <p class="price text-2xl font-bold text-burnt-orange mb-4">$49.99</p>
+                            <button class="add-to-cart w-full bg-forest-green hover:bg-forest-green/90 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                                Add to Cart
+                            </button>
+                        </div>
                     </div>
-                    <h3>Prickly Pear Cactus</h3>
-                    <p class="price">$49.99</p>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/img/Pink-Happy-Graduation.jpg" alt="Pink Happy Graduation Bouquet">
+                    <div class="product-card bg-cream rounded-2xl shadow-lg overflow-hidden product-card-hover">
+                        <div class="product-image overflow-hidden">
+                            <img src="/img/Pink-Happy-Graduation.jpg" alt="Pink Happy Graduation Bouquet" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-forest-green mb-3">Pink Happy Graduation</h3>
+                            <p class="price text-2xl font-bold text-burnt-orange mb-4">$44.99</p>
+                            <button class="add-to-cart w-full bg-forest-green hover:bg-forest-green/90 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                                Add to Cart
+                            </button>
+                        </div>
                     </div>
-                    <h3>Pink Happy Graduation</h3>
-                    <p class="price">$44.99</p>
-                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-nav">
-            <ul>
-                <li><a href="about.html">ABOUT US</a></li>
-                <li><a href="contact.html">CONTACT US</a></li>
-                <li><a href="home.html">HOME</a></li>
-                <li><a href="products.html">PRODUCTS</a></li>
-            </ul>
-        </div>
-        <div class="footer-info">
-            <div class="copyright">
-                <p>&copy; 2025 Zehrat Bladi. All Rights Reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-forest-green text-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Navigation -->
+                <div class="footer-nav">
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="hover:text-burnt-orange transition-colors duration-300">ABOUT US</a></li>
+                        <li><a href="contact.html" class="hover:text-burnt-orange transition-colors duration-300">CONTACT US</a></li>
+                        <li><a href="home.html" class="hover:text-burnt-orange transition-colors duration-300">HOME</a></li>
+                        <li><a href="products.html" class="hover:text-burnt-orange transition-colors duration-300">PRODUCTS</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="footer-info">
+                    <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                    <div class="space-y-2">
+                        <p class="address flex items-center"><i class="fas fa-map-marker-alt mr-2 text-burnt-orange"></i>123 Flower Street, Garden City 90210</p>
+                        <p class="phone flex items-center"><i class="fas fa-phone mr-2 text-burnt-orange"></i>(212) 1234-5678</p>
+                        <p class="email flex items-center"><i class="fas fa-envelope mr-2 text-burnt-orange"></i>info@zehratbladi.com</p>
+                    </div>
+                </div>
+                
+                <!-- Social Media -->
+                <div class="social-section">
+                    <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                    <div class="social-media flex space-x-4">
+                        <a href="#" class="bg-white/10 hover:bg-burnt-orange p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="bg-white/10 hover:bg-burnt-orange p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="bg-white/10 hover:bg-burnt-orange p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-pinterest text-xl"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="contact-info">
-                <p class="address">123 Flower Street, Garden City 90210</p>
-                <p class="phone">(212) 1234-5678</p>
-                <p class="email">info@zehratbladi.com</p>
+            
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <div class="copyright">
+                    <p>&copy; 2025 Zehrat Bladi. All Rights Reserved.</p>
+                </div>
             </div>
-        </div>
-        <div class="social-media">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-pinterest"></i></a>
         </div>
     </footer>
-
-	<script src="/config.js"></script>
-    <script src="/js/global.js"></script>
-	<script src="/js/chat-widget.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>

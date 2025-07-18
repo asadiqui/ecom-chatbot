@@ -4,171 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Zehrat Bladi</title>
-    <link rel="stylesheet" href="/css/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/contact.css">
 </head>
-<body>
-    <header>
-        <div class="logo">
-            <a href="home.html"><img src="/img/logo.png" alt="Zehrat Bladi Logo"></a>
+<body class="bg-secondary min-h-screen font-inter">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="logo">
+                    <a href="home.html" class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-seedling text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-primary">Zehrat Bladi</span>
+                    </a>
+                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="about.html" class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">ABOUT US</a></li>
+                        <li><a href="contact.html" class="text-primary font-semibold border-b-2 border-primary">CONTACT US</a></li>
+                        <li><a href="home.html" class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">HOME</a></li>
+                        <li><a href="products.html" class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">PRODUCTS</a></li>
+                    </ul>
+                </nav>
+                <button class="md:hidden text-primary">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="about.html">ABOUT US</a></li>
-                <li><a href="contact.html" class="active">CONTACT US</a></li>
-                <li><a href="home.html">HOME</a></li>
-                <li><a href="products.html">PRODUCTS</a></li>
-            </ul>
-        </nav>
     </header>
 
     <main>
-        <section class="page-hero">
-            <div class="hero-content">
-                <h1>Contact Us</h1>
-                <p>Get in touch for all your floral needs</p>
+        <!-- Hero Section -->
+        <section class="hero-gradient text-white py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="animate-fade-in">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">Contact Us</h1>
+                    <p class="text-xl md:text-2xl text-green-100">Get in touch for all your floral needs</p>
+                </div>
             </div>
         </section>
 
-        <section class="contact-content">
-            <div class="contact-info-section">
-                <h2>Get In Touch</h2>
-                <div class="contact-methods">
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+        <!-- Contact Content -->
+        <section class="py-20 bg-secondary">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Contact Methods -->
+                <div class="mb-20">
+                    <h2 class="text-4xl font-bold text-center text-primary mb-16 animate-fade-in">Get In Touch</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-lg animate-fade-in stagger-1">
+                            <div class="contact-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary mb-4">Visit Our Stores</h3>
+                            <p class="text-gray-600 leading-relaxed">Chat with the AI assistant<br>to find the nearest shop's info.</p>
                         </div>
-                        <div class="contact-details">
-                            <h3>Visit Our Stores</h3>
-                            <p>Chat with the AI assistant<br>to find the nearest shop’s info.</p>
+                        
+                        <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-lg animate-fade-in stagger-2">
+                            <div class="contact-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-phone text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary mb-4">Call Us</h3>
+                            <p class="text-gray-600 text-lg font-medium">(212) 1234-5678</p>
                         </div>
-                    </div>
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                        
+                        <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-lg animate-fade-in stagger-3">
+                            <div class="contact-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-envelope text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary mb-4">Email Us</h3>
+                            <p class="text-gray-600 text-lg">info@zehratbladi.com</p>
                         </div>
-                        <div class="contact-details">
-                            <h3>Call Us</h3>
-                            <p>(212) 1234-5678</p>
-                        </div>
-                    </div>
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email Us</h3>
-                            <p>info@zehratbladi.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Stores Hours</h3>
-                            <p>Chat with the AI assistant<br>to find the nearest shop’s info.</p>
+                        
+                        <div class="card-hover bg-white rounded-2xl p-8 text-center shadow-lg animate-fade-in stagger-4">
+                            <div class="contact-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-clock text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary mb-4">Stores Hours</h3>
+                            <p class="text-gray-600 leading-relaxed">Chat with the AI assistant<br>to find the nearest shop's info.</p>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="contact-form-section">
-                <h2>Send Us a Message</h2>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
+                <!-- Contact Form and Map -->
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <!-- Contact Form -->
+                    <div class="animate-fade-in">
+                        <h2 class="text-3xl font-bold text-primary mb-8">Send Us a Message</h2>
+                        <form class="space-y-6" id="contactForm">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none input-focus transition-all duration-300">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none input-focus transition-all duration-300">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none input-focus transition-all duration-300">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none input-focus transition-all duration-300">
+                            </div>
+                            
+                            <div>
+                                <label for="occasion" class="block text-sm font-medium text-gray-700 mb-2">Occasion/Event Type</label>
+                                <select id="occasion" name="occasion" 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none input-focus transition-all duration-300">
+                                    <option value="">Select an occasion</option>
+                                    <option value="wedding">Wedding</option>
+                                    <option value="birthday">Birthday</option>
+                                    <option value="anniversary">Anniversary</option>
+                                    <option value="sympathy">Sympathy</option>
+                                    <option value="graduation">Graduation</option>
+                                    <option value="corporate">Corporate Event</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                                <textarea id="message" name="message" rows="5" required
+                                          placeholder="Tell us about your floral needs..."
+                                          class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none input-focus transition-all duration-300 resize-none"></textarea>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <input type="checkbox" id="newsletter" name="newsletter" 
+                                       class="mt-1 w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary">
+                                <label for="newsletter" class="text-sm text-gray-600">
+                                    Subscribe to our newsletter for special offers and floral tips
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary w-full py-4 px-8 text-white font-semibold rounded-xl">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Send Message
+                            </button>
+                        </form>
+                        <div id="form-message" class="form-message mt-4 p-4 rounded-xl"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="occasion">Occasion/Event Type</label>
-                        <select id="occasion" name="occasion">
-                            <option value="">Select an occasion</option>
-                            <option value="wedding">Wedding</option>
-                            <option value="birthday">Birthday</option>
-                            <option value="anniversary">Anniversary</option>
-                            <option value="sympathy">Sympathy</option>
-                            <option value="graduation">Graduation</option>
-                            <option value="corporate">Corporate Event</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your floral needs..." required></textarea>
-                    </div>
-                    <div class="form-group checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="newsletter" name="newsletter">
-                            <span class="checkmark"></span>
-                            Subscribe to our newsletter for special offers and floral tips
-                        </label>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-                <div id="form-message" class="form-message"></div>
-            </div>
 
-            <div class="map-section">
-                <h2>Find Us</h2>
-                <div class="map-container">
-                    <div class="map-placeholder">
-                        <i class="fas fa-map"></i>
-                        <p>Interactive Map Coming Soon</p>
-                        <p class="address">123 Flower Street, Garden City 90210</p>
+                    <!-- Map Section -->
+                    <div class="animate-fade-in">
+                        <h2 class="text-3xl font-bold text-primary mb-8">Find Us</h2>
+                        <div class="bg-white rounded-2xl p-12 text-center shadow-lg">
+                            <div class="w-24 h-24 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-map text-white text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-primary mb-4">Interactive Map Coming Soon</h3>
+                            <p class="text-gray-600 text-lg font-medium">123 Flower Street, Garden City 90210</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="emergency-contact">
-                <h2>Emergency & Same-Day Orders</h2>
-                <p>Need flowers urgently? We offer same-day delivery for orders placed before 2:00 PM. For funeral arrangements and other emergency orders, please call us directly at <strong>(212) 1234-5678</strong>.</p>
+                <!-- Emergency Contact -->
+                <div class="mt-20 animate-fade-in">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-accent">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-exclamation-triangle text-accent mr-3"></i>
+                            Emergency & Same-Day Orders
+                        </h2>
+                        <p class="text-gray-600 leading-relaxed text-lg">
+                            Need flowers urgently? We offer same-day delivery for orders placed before 2:00 PM. 
+                            For funeral arrangements and other emergency orders, please call us directly at 
+                            <strong class="text-primary">(212) 1234-5678</strong>.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-nav">
-            <ul>
-                <li><a href="about.html">ABOUT US</a></li>
-                <li><a href="contact.html">CONTACT US</a></li>
-                <li><a href="home.html">HOME</a></li>
-                <li><a href="products.html">PRODUCTS</a></li>
-            </ul>
-        </div>
-        <div class="footer-info">
-            <div class="copyright">
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Navigation</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="hover:text-secondary transition-colors duration-300">ABOUT US</a></li>
+                        <li><a href="contact.html" class="hover:text-secondary transition-colors duration-300">CONTACT US</a></li>
+                        <li><a href="home.html" class="hover:text-secondary transition-colors duration-300">HOME</a></li>
+                        <li><a href="products.html" class="hover:text-secondary transition-colors duration-300">PRODUCTS</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact Info</h3>
+                    <div class="space-y-2">
+                        <p class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> 123 Flower Street, Garden City 90210</p>
+                        <p class="flex items-center"><i class="fas fa-phone mr-2"></i> (212) 1234-5678</p>
+                        <p class="flex items-center"><i class="fas fa-envelope mr-2"></i> info@zehratbladi.com</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-accent rounded-full flex items-center justify-center hover:bg-accent-dark transition-colors duration-300">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-accent rounded-full flex items-center justify-center hover:bg-accent-dark transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-accent rounded-full flex items-center justify-center hover:bg-accent-dark transition-colors duration-300">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-green-600 pt-6 text-center">
                 <p>&copy; 2025 Zehrat Bladi. All Rights Reserved.</p>
             </div>
-            <div class="contact-info">
-                <p class="address">123 Flower Street, Garden City 90210</p>
-                <p class="phone">(212) 1234-5678</p>
-                <p class="email">info@zehratbladi.com</p>
-            </div>
-        </div>
-        <div class="social-media">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-pinterest"></i></a>
         </div>
     </footer>
-
-	<script src="/config.js"></script>
-    <script src="/js/global.js"></script>
-	<script src="/js/chat-widget.js"></script>
+    <script src="js/contact.js"></script>
 </body>
 </html>
