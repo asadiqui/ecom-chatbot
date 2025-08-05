@@ -1,0 +1,8 @@
+1- filtering function for products
+2- link queries for products / search
+3- pagination functionality for products page
+4- same product cards for 404
+5- 404 animations
+6- cart ?
+7- build the AI assistant
+8- publish to Github and LinkedIn

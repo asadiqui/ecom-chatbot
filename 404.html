@@ -4,193 +4,273 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found - Zehrat Bladi</title>
-    <link rel="stylesheet" href="/css/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/404.css">
 </head>
-<body>
-    <header>
-        <div class="logo">
-            <a href="home.html"><img src="/img/logo.png" alt="Zehrat Bladi Logo"></a>
+<body class="font-inter bg-cream min-h-screen">
+    <!-- Header -->
+    <header class="header-container hero-gradient shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+                <div class="logo">
+                    <a href="home.html" class="flex items-center">
+                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-seedling text-secondary text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-secondary">Zehrat Bladi</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open menu" style="display: none;"><i class="fas fa-bars"></i></button>
+                <nav class="main-nav">
+                    <ul class="flex flex-wrap justify-center gap-6">
+                        <li>
+                            <a href="about.html" class="nav-link text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:bg-white hover:text-black hover-lift">
+                                ABOUT US
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="nav-link text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:bg-white hover:text-black hover-lift">
+                                CONTACT US
+                            </a>
+                        </li>
+                        <li>
+                            <a href="home.html" class="nav-link text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:bg-white hover:text-black hover-lift">
+                                HOME
+                            </a>
+                        </li>
+                        <li>
+                            <a href="products.html" class="nav-link text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:bg-white hover:text-black hover-lift">
+                                PRODUCTS
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="about.html">ABOUT US</a></li>
-                <li><a href="contact.html">CONTACT US</a></li>
-                <li><a href="home.html">HOME</a></li>
-                <li><a href="products.html">PRODUCTS</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <main class="error-main">
-        <section class="error-hero">
-            <div class="error-content">
-                <div class="error-visual">
-                    <div class="error-number">
-                        <span class="four">4</span>
-                        <div class="flower-zero">
-                            <i class="fas fa-seedling"></i>
+    <main class="flex-1">
+        <!-- Error Hero Section -->
+        <section class="py-20 px-6 min-h-screen flex items-center justify-center relative overflow-hidden">
+            <!-- Background decorative elements -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-20 left-10 w-32 h-32 bg-sage rounded-full animate-float"></div>
+                <div class="absolute bottom-20 right-20 w-24 h-24 bg-rust rounded-full animate-float-delayed"></div>
+                <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-sage rounded-full animate-float-slow"></div>
+            </div>
+
+            <div class="container mx-auto max-w-4xl text-center relative z-10">
+                <!-- Error Visual -->
+                <div class="error-visual mb-12">
+                    <div class="error-number flex items-center justify-center mb-8">
+                        <span class="text-9xl md:text-[12rem] font-bold text-sage opacity-90 animate-pulse">4</span>
+                        <div class="flower-zero mx-6 relative">
+                            <div class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-rust to-sage rounded-full flex items-center justify-center shadow-2xl animate-spin-slow">
+                                <i class="fas fa-seedling text-3xl md:text-4xl text-cream"></i>
+                            </div>
                         </div>
-                        <span class="four">4</span>
+                        <span class="text-9xl md:text-[12rem] font-bold text-sage opacity-90 animate-pulse">4</span>
                     </div>
-                    <div class="floating-petals">
-                        <div class="petal petal-1">🌸</div>
-                        <div class="petal petal-2">🌺</div>
-                        <div class="petal petal-3">🌼</div>
-                        <div class="petal petal-4">🌻</div>
-                        <div class="petal petal-5">🌷</div>
-                        <div class="petal petal-6">🌹</div>
+                    
+                    <!-- Floating Petals -->
+                    <div class="floating-petals absolute inset-0 pointer-events-none">
+                        <div class="petal absolute text-4xl animate-float-petal-1">🌸</div>
+                        <div class="petal absolute text-4xl animate-float-petal-2">🌺</div>
+                        <div class="petal absolute text-4xl animate-float-petal-3">🌼</div>
+                        <div class="petal absolute text-4xl animate-float-petal-4">🌻</div>
+                        <div class="petal absolute text-4xl animate-float-petal-5">🌷</div>
+                        <div class="petal absolute text-4xl animate-float-petal-6">🌹</div>
                     </div>
                 </div>
                 
-                <div class="error-text">
-                    <h1>Oops! This Flower Has Wilted</h1>
-                    <p class="error-subtitle">The page you're looking for seems to have been picked by someone else.</p>
-                    <p class="error-description">Don't worry though - our garden is full of beautiful alternatives!</p>
+                <!-- Error Text -->
+                <div class="error-text mb-12">
+                    <h1 class="text-4xl md:text-6xl font-bold text-sage mb-6 leading-tight">
+                        Oops! This Flower Has Wilted
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-600 mb-4 font-medium">
+                        The page you're looking for seems to have been picked by someone else.
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
+                        Don't worry though - our garden is full of beautiful alternatives!
+                    </p>
                 </div>
 
-                <div class="error-actions">
-                    <a href="home.html" class="btn-primary">
-                        <i class="fas fa-home"></i>
+                <!-- Action Buttons -->
+                <div class="error-actions flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                    <a href="home.html" class="btn-primary group">
+                        <i class="fas fa-home mr-3 group-hover:scale-110 transition-transform duration-300"></i>
                         Back to Garden
                     </a>
-                    <a href="products.html" class="btn-secondary">
-                        <i class="fas fa-leaf"></i>
+                    <a href="products.html" class="btn-secondary group">
+                        <i class="fas fa-leaf mr-3 group-hover:scale-110 transition-transform duration-300"></i>
                         Browse Flowers
                     </a>
                 </div>
 
-                <!-- Search functionality -->
-                <div class="error-search">
-                    <h3>Looking for something specific?</h3>
-                    <div class="search-box">
-                        <input type="text" id="errorSearch" placeholder="Search our flower collection...">
-                        <button type="button" onclick="performSearch()">
+                <!-- Search Box -->
+                <div class="error-search bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-xl mb-16 max-w-2xl mx-auto">
+                    <h3 class="text-2xl font-semibold text-sage mb-6">Looking for something specific?</h3>
+                    <div class="search-box relative">
+                        <input 
+                            type="text" 
+                            id="errorSearch" 
+                            placeholder="Search our flower collection..."
+                            class="w-full px-6 py-4 pr-14 rounded-xl border-2 border-gray-200 focus:border-sage focus:outline-none transition-all duration-300 text-lg"
+                        >
+                        <button 
+                            type="button" 
+                            onclick="performSearch()"
+                            class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-sage hover:bg-sage/90 text-white p-3 rounded-lg transition-all duration-300 hover:scale-105"
+                        >
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </div>
 
-                <!-- Quick links -->
-                <div class="quick-links">
-                    <h3>Popular Pages</h3>
-                    <div class="link-grid">
-                        <a href="products.html" class="quick-link">
-                            <i class="fas fa-shopping-bag"></i>
-                            <span>All Products</span>
+                <!-- Quick Links -->
+                <div class="quick-links bg-white/60 backdrop-blur-lg rounded-2xl p-8 shadow-xl max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-semibold text-sage mb-8">Popular Pages</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <a href="products.html" class="quick-link group">
+                            <div class="bg-gradient-to-br from-sage to-sage/80 text-white p-4 rounded-xl text-center hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                                <i class="fas fa-shopping-bag text-2xl mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                                <span class="block font-medium">All Products</span>
+                            </div>
                         </a>
-                        <a href="contact.html" class="quick-link">
-                            <i class="fas fa-envelope"></i>
-                            <span>Contact Us</span>
+                        <a href="contact.html" class="quick-link group">
+                            <div class="bg-gradient-to-br from-rust to-rust/80 text-white p-4 rounded-xl text-center hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                                <i class="fas fa-envelope text-2xl mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                                <span class="block font-medium">Contact Us</span>
+                            </div>
                         </a>
-                        <a href="about.html" class="quick-link">
-                            <i class="fas fa-info-circle"></i>
-                            <span>About Us</span>
+                        <a href="about.html" class="quick-link group">
+                            <div class="bg-gradient-to-br from-sage to-sage/80 text-white p-4 rounded-xl text-center hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                                <i class="fas fa-info-circle text-2xl mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                                <span class="block font-medium">About Us</span>
+                            </div>
                         </a>
-                        <a href="products.html?occasion=wedding" class="quick-link">
-                            <i class="fas fa-heart"></i>
-                            <span>Wedding Flowers</span>
+                        <a href="products.html?occasion=wedding" class="quick-link group">
+                            <div class="bg-gradient-to-br from-rust to-rust/80 text-white p-4 rounded-xl text-center hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                                <i class="fas fa-heart text-2xl mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                                <span class="block font-medium">Wedding Flowers</span>
+                            </div>
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Featured products section for 404 page -->
-        <section class="error-suggestions">
-            <div class="suggestions-content">
-                <h2>While You're Here, Check These Out</h2>
-                <div class="product-grid">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="/img/Birth-of-Paradise.jpg" alt="Birth of Paradise Bouquet">
+        <!-- Featured Products Section -->
+        <section class="py-20 px-6 bg-gradient-to-br from-white to-cream">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-sage mb-4">While You're Here, Check These Out</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="product-card bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 group">
+                        <div class="product-image relative overflow-hidden">
+                            <img src="/img/Birth-of-Paradise.jpg" alt="Birth of Paradise Bouquet" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-                        <h3>Birth of Paradise</h3>
-                        <p class="price">$44.99</p>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-sage mb-2">Birth of Paradise</h3>
+                            <p class="text-2xl font-bold text-rust mb-4">$44.99</p>
+                            <button class="add-to-cart w-full">Add to Cart</button>
+                        </div>
                     </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="/img/Birthday-Cheers.jpg" alt="Birthday Cheers Florals">
+                    <div class="product-card bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 group">
+                        <div class="product-image relative overflow-hidden">
+                            <img src="/img/Birthday-Cheers.jpg" alt="Birthday Cheers Florals" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-                        <h3>Birthday Cheers</h3>
-                        <p class="price">$49.99</p>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-sage mb-2">Birthday Cheers</h3>
+                            <p class="text-2xl font-bold text-rust mb-4">$49.99</p>
+                            <button class="add-to-cart w-full">Add to Cart</button>
+                        </div>
                     </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="/img/Birthday-Romance.jpg" alt="Birthday Romance Bouquet">
+                    <div class="product-card bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 group">
+                        <div class="product-image relative overflow-hidden">
+                            <img src="/img/Birthday-Romance.jpg" alt="Birthday Romance Bouquet" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-                        <h3>Birthday Romance</h3>
-                        <p class="price">$54.99</p>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-sage mb-2">Birthday Romance</h3>
+                            <p class="text-2xl font-bold text-rust mb-4">$54.99</p>
+                            <button class="add-to-cart w-full">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-nav">
-            <ul>
-                <li><a href="about.html">ABOUT US</a></li>
-                <li><a href="contact.html">CONTACT US</a></li>
-                <li><a href="home.html">HOME</a></li>
-                <li><a href="products.html">PRODUCTS</a></li>
-            </ul>
-        </div>
-        <div class="footer-info">
-            <div class="copyright">
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Navigation -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Navigation</h3>
+                    <nav class="space-y-3">
+                        <a href="about.html" class="block text-gray-300 hover:text-primary transition-colors duration-300">ABOUT US</a>
+                        <a href="contact.html" class="block text-gray-300 hover:text-primary transition-colors duration-300">CONTACT US</a>
+                        <a href="home.html" class="block text-gray-300 hover:text-primary transition-colors duration-300">HOME</a>
+                        <a href="products.html" class="block text-gray-300 hover:text-primary transition-colors duration-300">PRODUCTS</a>
+                    </nav>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contact Info</h3>
+                    <div class="space-y-3 text-gray-300">
+                        <p class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-primary"></i>
+                            123 Flower Street, Garden City 90210
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-primary"></i>
+                            (212) 1234-5678
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-primary"></i>
+                            info@zehratbladi.com
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Social Media -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-300">
+                            <i class="fab fa-facebook text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-300">
+                            <i class="fab fa-instagram text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-300">
+                            <i class="fab fa-pinterest text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
                 <p>&copy; 2025 Zehrat Bladi. All Rights Reserved.</p>
             </div>
-            <div class="contact-info">
-                <p class="address">123 Flower Street, Garden City 90210</p>
-                <p class="phone">(212) 1234-5678</p>
-                <p class="email">info@zehratbladi.com</p>
-            </div>
-        </div>
-        <div class="social-media">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-pinterest"></i></a>
         </div>
     </footer>
 
-	<script src="/config.js"></script>
-    <script src="/js/global.js"></script>
-	<script src="/js/chat-widget.js"></script>
-    <script>
-        // Simple search functionality for 404 page
-        function performSearch() {
-            const searchTerm = document.getElementById('errorSearch').value.trim();
-            if (searchTerm) {
-                // In a real application, you would implement actual search
-                // For now, redirect to products page with search parameter
-                window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
-            }
-        }
-        
-        // Allow search on Enter key
-        document.getElementById('errorSearch').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
-        
-        // Initialize floating petals animation
-        function initFloatingPetals() {
-            const petals = document.querySelectorAll('.petal');
-            petals.forEach((petal, index) => {
-                // Random animation delay
-                petal.style.animationDelay = (index * 0.5) + 's';
-                
-                // Random horizontal position
-                petal.style.left = Math.random() * 100 + '%';
-            });
-        }
-        
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', initFloatingPetals);
-    </script>
+    <script src="/config.js"></script>
+    <!-- <script src="/js/global.js"></script> -->
+    <script src="/js/chat-widget.js"></script>
+    <script src="/js/404.js"></script>
 </body>
 </html>
