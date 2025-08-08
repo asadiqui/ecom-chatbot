@@ -1,0 +1,254 @@
+/* Mobile menu styles */
+@media (max-width: 768px) {
+    /* .header-container > div {
+        position: relative;
+    } */
+
+    .cart-icon {
+        margin-right: 3rem;
+    }
+}
+
+/* Cart Styles */
+.cart-sidebar {
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.cart-sidebar.open {
+    transform: translateX(0);
+}
+
+.cart-overlay {
+    z-index: 999;
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    font-size: 10px;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.cart-item {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 1rem 0;
+    animation: slideInRight 0.3s ease;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.cart-item-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.cart-item-details h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 4px;
+}
+
+.cart-item-details p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.cart-item-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.quantity-btn {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 12px;
+}
+
+.quantity-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 2px;
+    font-size: 12px;
+}
+
+.remove-item {
+    color: #dc2626;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.remove-item:hover {
+    background-color: #fee2e2;
+}
+
+.cart-total {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 1rem 0;
+    border-top: 2px solid var(--primary-color);
+}
+
+/* Mobile responsiveness for cart */
+@media (max-width: 480px) {
+    .cart-sidebar {
+        width: 100vw;
+    }
+}
+
+/* Cart animation improvements */
+.cart-sidebar {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cart-overlay {
+    transition: opacity 0.3s ease;
+}
+
+/* Ensure cart header is always visible */
+.cart-header {
+    flex-shrink: 0;
+}
+
+/* Cart items scrolling */
+.cart-items {
+    max-height: calc(100vh - 200px);
+}
+
+/* Better quantity input */
+.quantity-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(96, 108, 56, 0.1);
+}
+
+/* Cart success animation */
+@keyframes cartSuccess {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.cart-icon.success {
+    animation: cartSuccess 0.3s ease;
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 768px) {
+    .cart-sidebar {
+        width: 100vw;
+    }
+    
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cart-item-image {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Loading state for cart */
+.cart-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    color: var(--primary-color);
+}
+
+/* Notification styles */
+.notification {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification button:hover {
+    transform: scale(1.1);
+}
+
+/* Cart slide-in animation enhancement */
+.cart-sidebar.open {
+    transform: translateX(0);
+    box-shadow: -20px 0 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Scroll to top */
+.scroll-to-top {
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
+}
+
+.scroll-to-top.visible {
+	opacity: 1;
+	visibility: visible;
+}

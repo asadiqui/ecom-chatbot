@@ -5,12 +5,14 @@ tailwind.config = {
                 primary: '#606c38',
                 'primary': '#606c38',
 				'forest-green': '#606c38',
+                'sage': '#606c38',
 				secondary: '#fefae0',
                 'secondary': '#fefae0',
 				'cream': '#fefae0',
 				accent: '#bc6c25',
                 'accent': '#bc6c25',
 				'burnt-orange': '#bc6c25',
+                'rust': '#bc6c25',
 				'primary-dark': '#4a5429',
 				'accent-dark': '#9d5620',
 			},
@@ -118,4 +120,38 @@ window.addEventListener('scroll', () => {
 		const speed = scrolled * 0.5;
 		parallax.style.transform = `translateY(${speed}px)`;
 	}
+});
+
+// Loading animation for page transitions
+function initPageTransitions() {
+    document.querySelectorAll('a[href*=".html"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Only apply to internal links
+            if (!href.startsWith('http') && !href.startsWith('mailto')) {
+                e.preventDefault();
+                
+                // Create loading overlay
+                const overlay = document.createElement('div');
+                overlay.className = 'fixed inset-0 bg-cream/90 backdrop-blur-sm z-50 flex items-center justify-center transition-opacity duration-300';
+                overlay.innerHTML = `
+                    <div class="text-center">
+                        <div class="animate-spin w-12 h-12 border-4 border-sage border-t-transparent rounded-full mx-auto mb-4"></div>
+                        <p class="text-sage font-medium">Loading...</p>
+                    </div>
+                `;
+                
+                document.body.appendChild(overlay);
+                
+                // Navigate after brief delay
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 250);
+            }
+        });
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    initPageTransitions();
 });

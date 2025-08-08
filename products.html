@@ -8,12 +8,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 	<link rel="stylesheet" href="css/products.css">
+	<link rel="stylesheet" href="css/cart.css">
 </head>
 <body class="bg-secondary text-gray-800">
     <!-- Header -->
-    <header class="header-container hero-gradient shadow-lg sticky top-0 z-50">
+    <header class="header-container shadow-lg sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 py-4">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
                 <div class="logo">
@@ -47,6 +48,13 @@
                                 PRODUCTS
                             </a>
                         </li>
+                        <li>
+							<!-- class cart-icon (css-only) was deleted -->
+                            <a href="#" id="cart-toggle" class="nav-link text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:bg-white hover:text-black hover-lift">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span id="cart-count" class="cart-count absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold" style="display: none;">0</span>
+							 </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -75,7 +83,7 @@
                     <div class="relative max-w-md">
                         <input type="text" id="product-search" placeholder="Search products..." 
                                class="w-full pl-6 pr-16 py-4 border-2 border-gray-200 rounded-full text-lg transition-all duration-300 focus:outline-none focus:border-primary search-focus bg-gray-50 focus:bg-white">
-                        <button id="search-btn" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary text-white p-3 rounded-full hover:bg-accent transition-all duration-300 hover-lift">
+                        <button id="search-btn" class="absolute right-2 top-2 bg-primary text-white p-3 rounded-full hover:bg-accent transition-all duration-300 hover-lift">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -117,7 +125,284 @@
         </section>
 
         <!-- Products Section -->
+        <section class="all-products mb-16">
+            <h2 class="text-4xl font-bold text-primary text-center mb-12">All Products</h2>
+            <div class="product-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Row 1 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="romance" data-gender="men" data-price="39.99">
+                    <div class="product-image h-64">
+                        <img src="/img/All-You-Need-is-Love.jpg" alt="All You Need is Love Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">All You Need is Love</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$39.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="birthday" data-gender="women" data-price="44.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Birth-of-Paradise.jpg" alt="Birth of Paradise Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Birth of Paradise</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$44.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="birthday" data-gender="men" data-price="49.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Birthday-Cheers.jpg" alt="Birthday Cheers Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Birthday Cheers</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$49.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="birthday" data-gender="women" data-price="54.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Birthday-Romance.jpg" alt="Birthday Romance Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Birthday Romance</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$54.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
 
+                <!-- Row 2 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="thank" data-gender="men" data-price="59.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Bold-Thanks.jpg" alt="Bold Thanks Collection" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bold Thanks</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$59.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="thank" data-gender="women" data-price="64.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Elegant-Gratitude.jpg" alt="Elegant Gratitude Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Elegant Gratitude</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$64.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="well" data-gender="men" data-price="89.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Get-Well-Soon.jpg" alt="Get Well Soon Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Get Well Soon</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$89.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="thank" data-gender="women" data-price="42.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Graceful-Appreciation.jpg" alt="Graceful Appreciation Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Graceful Appreciation</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$42.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="thank" data-gender="men" data-price="39.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Gratitude-Cheers.jpg" alt="Gratitude Cheers Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Gratitude Cheers</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$39.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="other" data-gender="women" data-price="69.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Happy-Blossoms.jpg" alt="Happy Blossoms Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Happy Blossoms</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$69.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="other" data-gender="men" data-price="49.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Just-Because-Vibrance.jpg" alt="Just Because Vibrance Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Just Because Vibrance</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$49.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="anniversary" data-gender="men" data-price="44.99">
+                    <div class="product-image h-64">
+                        <img src="/img/His-Anniversary.jpg" alt="His Anniversary Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">His Anniversary</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$44.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="valentine" data-gender="men" data-price="54.99">
+                    <div class="product-image h-64">
+                        <img src="/img/His-Valentine's-Day.jpg" alt="His Valentine's Day Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">His Valentine's Day</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$54.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="baby" data-gender="men" data-price="79.99">
+                    <div class="product-image h-64">
+                        <img src="/img/It's-a-Boy.jpg" alt="It's a Boy Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">It's a Boy</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$79.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="baby" data-gender="women" data-price="59.99">
+                    <div class="product-image h-64">
+                        <img src="/img/It's-a-Girl.jpg" alt="It's a Girl Collection" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">It's a Girl</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$59.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="other" data-gender="men" data-price="47.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Just-Because-Charm.jpg" alt="Just Because Charm Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Just Because Charm</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$47.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Row 5 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="other" data-gender="women" data-price="64.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Just-For-her.jpg" alt="Just For her Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Just For her</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$64.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="christmas" data-gender="women men" data-price="54.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Large-Red-Poinsettia.jpg" alt="Large Red Poinsettia Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Large Red Poinsettia</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$54.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="anniversary valentine" data-gender="women" data-price="99.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Long-Stem-Roses.jpg" alt="Long Stem Roses Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Long Stem Roses</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$99.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="romance" data-gender="women" data-price="49.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Love-is-in-the-Air.jpg" alt="Love is in the Air Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Love is in the Air</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$49.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Row 6 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="mother" data-gender="women" data-price="59.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Mother's-Day.jpg" alt="Mother's Day Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Mother's Day</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$59.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="well" data-gender="women" data-price="74.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Pink-and-Orange-Get-well-Soon.jpg" alt="Pink and Orange Get well Soon Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Pink and Orange Get well Soon</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$74.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="graduation" data-gender="women" data-price="44.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Pink-Happy-Graduation.jpg" alt="Pink Happy Graduation Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Pink Happy Graduation</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$44.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="birthday" data-gender="men" data-price="49.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Prickly-Pear-Cactus.jpg" alt="Prickly Pear Cactus Bouquet" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Prickly Pear Cactus</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$49.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Row 7 (last 2 products) -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="graduation" data-gender="men" data-price="119.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Way-to-go-Man.jpg" alt="Way to go Man Collection" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Way to go Man</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$119.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg card-hover transition-all duration-300" data-category="wedding" data-gender="women men" data-price="84.99">
+                    <div class="product-image h-64">
+                        <img src="/img/Wedding-Day-Florals.jpg" alt="Wedding Day Florals Box" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Wedding Day Florals</h3>
+                        <p class="text-2xl font-bold text-accent mb-4">$84.99</p>
+                        <button class="add-to-cart w-full py-3 btn-primary text-white font-semibold rounded-xl ripple-effect transition-all duration-300">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Pagination -->
         <section class="pagination flex justify-center gap-2 mb-12">
@@ -189,8 +474,8 @@
     </button>
 
     <script src="/config.js"></script>
-    <!-- <script src="/js/global.js"></script> -->
     <script src="/js/chat-widget.js"></script>
+	<script src="js/cart.js"></script>
 	<script src="js/products.js"></script>
 </body>
 </html>

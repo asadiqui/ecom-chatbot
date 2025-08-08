@@ -41,6 +41,8 @@
 
 .hero-gradient {
 	background: linear-gradient(135deg, var(--primary-color) 0%, #4a5c2a 100%);
+	position: relative;
+	z-index: 10;
 }
 
 .hover-lift:hover {
@@ -172,4 +174,19 @@
 }
 .backdrop-blur {
     backdrop-filter: blur(10px);
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

@@ -1,3 +1,39 @@
+tailwind.config = {
+	theme: {
+		extend: {
+			colors: {
+				primary: '#606c38',
+				'primary': '#606c38',
+				'forest-green': '#606c38',
+				'sage': '#606c38',
+				secondary: '#fefae0',
+				'secondary': '#fefae0',
+				'cream': '#fefae0',
+				accent: '#bc6c25',
+				'accent': '#bc6c25',
+				'burnt-orange': '#bc6c25',
+				'rust': '#bc6c25',
+				'primary-dark': '#4a5429',
+				'accent-dark': '#9d5620',
+			},
+			fontFamily: {
+				'inter': ['Inter', 'sans-serif'],
+				'sans': ['Inter', 'system-ui', 'sans-serif']
+			}
+		}
+	}
+}
+
+// Add subtle parallax effect to hero
+window.addEventListener('scroll', () => {
+	const scrolled = window.pageYOffset;
+	const parallax = document.querySelector('.products-hero');
+	if (parallax) {
+		const speed = scrolled * 0.5;
+		parallax.style.transform = `translateY(${speed}px)`;
+	}
+});
+
 // Modern JavaScript for enhanced interactions
 document.addEventListener('DOMContentLoaded', function () {
 	// Add fade-in animation delay for product cards
@@ -6,89 +42,344 @@ document.addEventListener('DOMContentLoaded', function () {
 		card.style.animationDelay = `${index * 0.1}s`;
 	});
 
-	// Search functionality
-	const searchInput = document.getElementById('product-search');
+	// --- Begin robust pagination, filtering, and sorting logic from global.js ---
+	const productSearch = document.getElementById('product-search');
+	const sortBy = document.getElementById('sort-by');
+	const filterBy = document.getElementById('filter-by');
+	const genderFilter = document.getElementById('gender-filter');
+	// const productCards = document.querySelectorAll('.product-card');
 	const searchBtn = document.getElementById('search-btn');
 
-	function performSearch() {
-		const searchTerm = searchInput.value.toLowerCase().trim();
-		productCards.forEach(card => {
-			const productName = card.querySelector('h3').textContent.toLowerCase();
-			if (productName.includes(searchTerm) || searchTerm === '') {
-				card.style.display = 'block';
-				card.classList.add('fade-in');
-			} else {
-				card.style.display = 'none';
-			}
+	function getURLParams() {
+		const urlParams = new URLSearchParams(window.location.search);
+		return {
+			query: urlParams.get('search') || '',
+			occasion: urlParams.get('occasion') || 'all',
+			gender: urlParams.get('gender') || 'all',
+			sort: urlParams.get('sort') || '',
+			page: parseInt(urlParams.get('page')) || 1
+		};
+	}
+
+	function updateURL(query, occasion, gender, sort, page = 1) {
+		const params = new URLSearchParams();
+		if (query && query.trim()) params.set('search', query.trim());
+		if (occasion && occasion !== 'all') params.set('occasion', occasion);
+		if (gender && gender !== 'all') params.set('gender', gender);
+		if (sort) params.set('sort', sort);
+		if (page > 1) params.set('page', page);
+		const newURL = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
+		window.history.replaceState({}, '', newURL);
+	}
+
+	function initializeFromURL() {
+		const params = getURLParams();
+		if (productSearch && params.query) productSearch.value = params.query;
+		if (filterBy && params.occasion) filterBy.value = params.occasion;
+		if (genderFilter && params.gender) genderFilter.value = params.gender;
+		if (sortBy && params.sort) sortBy.value = params.sort;
+		return params;
+	}
+
+	function animateProductCards() {
+		const visibleCards = document.querySelectorAll('.product-card:not([style*="display: none"])');
+		visibleCards.forEach((card, index) => {
+			card.style.opacity = '0';
+			card.style.transform = 'translateY(20px)';
+			setTimeout(() => {
+				card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+				card.style.opacity = '1';
+				card.style.transform = 'translateY(0)';
+			}, index * 50);
 		});
 	}
 
-	searchBtn.addEventListener('click', performSearch);
-	searchInput.addEventListener('keypress', function (e) {
-		if (e.key === 'Enter') {
-			performSearch();
+	function updateResultsCounter() {
+		const visibleProducts = Array.from(productCards).filter(card => {
+			return card.classList.contains('search-match') && card.classList.contains('category-match') && card.style.display !== 'none';
+		});
+		let resultsCounter = document.querySelector('.results-counter');
+		if (!resultsCounter) {
+			resultsCounter = document.createElement('div');
+			resultsCounter.className = 'results-counter text-sm text-gray-600 mb-4';
+			const productGrid = document.querySelector('.product-grid');
+			if (productGrid && productGrid.parentNode) {
+				productGrid.parentNode.insertBefore(resultsCounter, productGrid);
+			}
 		}
-	});
+		const totalVisible = Array.from(productCards).filter(card => {
+			return card.classList.contains('search-match') && card.classList.contains('category-match');
+		}).length;
+		resultsCounter.innerHTML = `
+		<span class="font-medium text-[#606c38]">${totalVisible}</span> 
+		product${totalVisible !== 1 ? 's' : ''} found
+		${visibleProducts.length < totalVisible ? ` (showing ${visibleProducts.length})` : ''}
+	`;
+	}
 
-	// Filter functionality
-	const sortSelect = document.getElementById('sort-by');
-	const genderSelect = document.getElementById('gender-filter');
-	const occasionSelect = document.getElementById('filter-by');
-
-	function applyFilters() {
-		const sortValue = sortSelect.value;
-		const genderValue = genderSelect.value;
-		const occasionValue = occasionSelect.value;
-
-		let visibleCards = Array.from(productCards).filter(card => {
-			const cardGender = card.getAttribute('data-gender');
-			const cardCategory = card.getAttribute('data-category');
-
-			const genderMatch = genderValue === 'all' || cardGender === genderValue;
-			const occasionMatch = occasionValue === 'all' || cardCategory === occasionValue;
-
-			return genderMatch && occasionMatch;
-		});
-
-		// Hide all cards first
+	if (productSearch && sortBy && filterBy) {
+		const urlParams = initializeFromURL();
 		productCards.forEach(card => {
-			card.style.display = 'none';
+			card.classList.add('search-match', 'category-match');
+			card.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
 		});
 
-		// Sort visible cards
-		if (sortValue !== 'default') {
-			visibleCards.sort((a, b) => {
-				const priceA = parseFloat(a.getAttribute('data-price'));
-				const priceB = parseFloat(b.getAttribute('data-price'));
-				const nameA = a.querySelector('h3').textContent;
-				const nameB = b.querySelector('h3').textContent;
-
-				switch (sortValue) {
-					case 'price-low':
-						return priceA - priceB;
-					case 'price-high':
-						return priceB - priceA;
-					case 'name-asc':
-						return nameA.localeCompare(nameB);
-					case 'name-desc':
-						return nameB.localeCompare(nameA);
-					default:
-						return 0;
+		function searchProducts(searchTerm = null) {
+			const query = searchTerm !== null ? searchTerm : productSearch.value.toLowerCase();
+			let hasResults = false;
+			productCards.forEach(card => {
+				const productName = card.querySelector('h3').textContent.toLowerCase();
+				const productDescription = card.querySelector('.product-description')?.textContent.toLowerCase() || '';
+				const searchableText = productName + ' ' + productDescription;
+				if (!query || searchableText.includes(query)) {
+					card.classList.add('search-match');
+					hasResults = true;
+				} else {
+					card.classList.remove('search-match');
 				}
 			});
+			showNoResultsMessage(!hasResults);
+			updateCurrentURL();
 		}
 
-		// Show and reorder visible cards
-		const productGrid = document.querySelector('.product-grid');
-		visibleCards.forEach(card => {
-			card.style.display = 'block';
-			productGrid.appendChild(card);
-		});
-	}
+		function showNoResultsMessage(show) {
+			let noResultsMsg = document.querySelector('.no-results-message');
+			if (show && !noResultsMsg) {
+				noResultsMsg = document.createElement('div');
+				noResultsMsg.className = 'no-results-message text-center py-12 px-4';
+				noResultsMsg.innerHTML = `
+				<div class="max-w-md mx-auto">
+					<div class="text-6xl mb-4">🔍</div>
+					<h3 class="text-xl font-semibold text-[#606c38] mb-2">No products found</h3>
+					<p class="text-gray-600 mb-6">Try adjusting your search or filters to find what you're looking for.</p>
+					<button onclick="clearAllFilters()" class="bg-[#bc6c25] text-white px-6 py-2 rounded-lg hover:bg-[#a85a1f] transition-colors">
+						Clear All Filters
+					</button>
+				</div>
+			`;
+				const productGrid = document.querySelector('.product-grid');
+				if (productGrid && productGrid.parentNode) {
+					productGrid.parentNode.appendChild(noResultsMsg);
+				}
+			} else if (!show && noResultsMsg) {
+				noResultsMsg.remove();
+			}
+		}
 
-	sortSelect.addEventListener('change', applyFilters);
-	genderSelect.addEventListener('change', applyFilters);
-	occasionSelect.addEventListener('change', applyFilters);
+		window.clearAllFilters = function () {
+			if (productSearch) productSearch.value = '';
+			if (filterBy) filterBy.value = 'all';
+			if (genderFilter) genderFilter.value = 'all';
+			if (sortBy) sortBy.value = '';
+			productCards.forEach(card => {
+				card.classList.add('search-match', 'category-match');
+				card.style.display = 'block';
+			});
+			updateURL('', 'all', 'all', '', 1);
+			showNoResultsMessage(false);
+			updateResultsCounter();
+			const paginationSection = document.querySelector('.pagination');
+			if (paginationSection) {
+				displayProductsForPage(1);
+			}
+		};
+
+		function updateCurrentURL(pageNum = 1) {
+			const query = productSearch.value;
+			const occasion = filterBy ? filterBy.value : 'all';
+			const gender = genderFilter ? genderFilter.value : 'all';
+			const sort = sortBy ? sortBy.value : '';
+			updateURL(query, occasion, gender, sort, pageNum);
+		}
+
+		function sortProducts(sortValue) {
+			if (!sortValue) return;
+			setTimeout(() => {
+				const productsArray = Array.from(productCards);
+				switch (sortValue) {
+					case 'price-low':
+						productsArray.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+						break;
+					case 'price-high':
+						productsArray.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+						break;
+					case 'name-asc':
+						productsArray.sort((a, b) => a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent));
+						break;
+					case 'name-desc':
+						productsArray.sort((a, b) => b.querySelector('h3').textContent.localeCompare(a.querySelector('h3').textContent));
+						break;
+					default:
+						return;
+				}
+				const productGrid = document.querySelector('.product-grid');
+				productsArray.forEach(card => productGrid.appendChild(card));
+				animateProductCards();
+			}, 200);
+		}
+
+		function applyFilters() {
+			const occasionValue = filterBy ? filterBy.value : 'all';
+			const genderValue = genderFilter ? genderFilter.value : 'all';
+			let hasResults = false;
+			productCards.forEach(card => {
+				const occasionMatch = occasionValue === 'all' || card.dataset.category.split(' ').includes(occasionValue);
+				const genderMatch = genderValue === 'all' || card.dataset.gender.split(' ').includes(genderValue);
+				if (occasionMatch && genderMatch) {
+					card.classList.add('category-match');
+					if (card.classList.contains('search-match')) hasResults = true;
+				} else {
+					card.classList.remove('category-match');
+				}
+			});
+			const totalVisible = Array.from(productCards).filter(card => card.classList.contains('search-match') && card.classList.contains('category-match')).length;
+			showNoResultsMessage(totalVisible === 0);
+			updateCurrentURL();
+		}
+
+		const paginationSection = document.querySelector('.pagination');
+		if (paginationSection) {
+			const productsPerPage = 8;
+			let currentPage = urlParams.page;
+
+			function goToPage(pageNum) {
+				currentPage = pageNum;
+				displayProductsForPage(currentPage);
+				updateCurrentURL(currentPage);
+				const allProducts = document.querySelector('.all-products');
+				if (allProducts) {
+					allProducts.scrollIntoView({
+						behavior: 'smooth',
+						block: 'start'
+					});
+				}
+			}
+
+			function goToNextPage() {
+				const visibleProducts = Array.from(document.querySelectorAll('.product-card')).filter(card => card.classList.contains('search-match') && card.classList.contains('category-match'));
+				const totalPages = Math.max(1, Math.ceil(visibleProducts.length / productsPerPage));
+				if (currentPage < totalPages) {
+					currentPage++;
+					displayProductsForPage(currentPage);
+					updateCurrentURL(currentPage);
+				}
+			}
+
+			function goToPreviousPage() {
+				if (currentPage > 1) {
+					currentPage--;
+					displayProductsForPage(currentPage);
+					updateCurrentURL(currentPage);
+				}
+			}
+
+			function renderPaginationButtons(currentPage, totalPages) {
+				paginationSection.innerHTML = '';
+				if (totalPages <= 1) return;
+				const prevButton = document.createElement('button');
+				prevButton.className = `page-btn previous px-3 py-2 rounded-lg border transition-all duration-200 ${currentPage === 1 ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed' : 'bg-white text-[#606c38] border-[#606c38] hover:bg-[#606c38] hover:text-white'}`;
+				prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+				prevButton.disabled = currentPage === 1;
+				prevButton.addEventListener('click', goToPreviousPage);
+				paginationSection.appendChild(prevButton);
+				let startPage = 1;
+				let endPage = totalPages;
+				if (totalPages > 5) {
+					startPage = Math.max(1, currentPage - 2);
+					endPage = startPage + 4;
+					if (endPage > totalPages) {
+						endPage = totalPages;
+						startPage = Math.max(1, endPage - 4);
+					}
+				}
+				for (let i = startPage; i <= endPage; i++) {
+					const pageButton = document.createElement('button');
+					pageButton.className = `page-btn px-3 py-2 rounded-lg border transition-all duration-200 ${i === currentPage ? 'bg-[#606c38] text-white border-[#606c38]' : 'bg-white text-[#606c38] border-gray-300 hover:bg-[#606c38] hover:text-white hover:border-[#606c38]'}`;
+					pageButton.textContent = i;
+					pageButton.addEventListener('click', (function (pageNum) {
+						return function () {
+							goToPage(pageNum);
+						};
+					})(i));
+					paginationSection.appendChild(pageButton);
+				}
+				const nextButton = document.createElement('button');
+				nextButton.className = `page-btn next px-3 py-2 rounded-lg border transition-all duration-200 ${currentPage === totalPages || totalPages === 0 ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed' : 'bg-white text-[#606c38] border-[#606c38] hover:bg-[#606c38] hover:text-white'}`;
+				nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+				nextButton.disabled = currentPage === totalPages || totalPages === 0;
+				nextButton.addEventListener('click', goToNextPage);
+				paginationSection.appendChild(nextButton);
+			}
+
+			function displayProductsForPage(pageNum) {
+				productCards.forEach(card => {
+					card.style.opacity = '0';
+					setTimeout(() => {
+						card.style.display = 'none';
+					}, 150);
+				});
+				setTimeout(() => {
+					const visibleProducts = Array.from(document.querySelectorAll('.product-card')).filter(card => card.classList.contains('search-match') && card.classList.contains('category-match'));
+					const totalPages = Math.max(1, Math.ceil(visibleProducts.length / productsPerPage));
+					if (currentPage > totalPages) currentPage = totalPages;
+					const startIndex = (pageNum - 1) * productsPerPage;
+					const endIndex = Math.min(startIndex + productsPerPage, visibleProducts.length);
+					visibleProducts.slice(startIndex, endIndex).forEach((card, index) => {
+						card.style.display = 'block';
+						setTimeout(() => {
+							card.style.opacity = '1';
+						}, index * 50);
+					});
+					renderPaginationButtons(currentPage, totalPages);
+					updateResultsCounter();
+				}, 200);
+			}
+
+			function updateProductsAndPagination() {
+				currentPage = 1;
+				displayProductsForPage(currentPage);
+				updateCurrentURL(currentPage);
+				animateProductCards();
+			}
+
+			let searchTimeout;
+			productSearch.addEventListener('input', function () {
+				clearTimeout(searchTimeout);
+				searchTimeout = setTimeout(() => {
+					searchProducts();
+					updateProductsAndPagination();
+				}, 300);
+			});
+			if (searchBtn) {
+				searchBtn.addEventListener('click', function () {
+					searchProducts();
+					updateProductsAndPagination();
+				});
+			}
+			filterBy.addEventListener('change', function () {
+				applyFilters();
+				updateProductsAndPagination();
+			});
+			if (genderFilter) {
+				genderFilter.addEventListener('change', function () {
+					applyFilters();
+					updateProductsAndPagination();
+				});
+			}
+			sortBy.addEventListener('change', function () {
+				const sortValue = this.value;
+				sortProducts(sortValue);
+				updateProductsAndPagination();
+			});
+			if (urlParams.query) searchProducts(urlParams.query);
+			if (urlParams.occasion !== 'all' || urlParams.gender !== 'all') applyFilters();
+			if (urlParams.sort) sortProducts(urlParams.sort);
+			displayProductsForPage(currentPage);
+		}
+		updateResultsCounter();
+	}
+	// --- End robust pagination, filtering, and sorting logic ---
+
 
 	// Add to cart functionality with animation
 	const addToCartButtons = document.querySelectorAll('.add-to-cart');
@@ -102,24 +393,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				this.textContent = originalText;
 				this.style.background = '';
 			}, 1500);
-		});
-	});
-
-	// Scroll to top functionality
-	const scrollToTopBtn = document.getElementById('scrollToTop');
-
-	window.addEventListener('scroll', function () {
-		if (window.pageYOffset > 300) {
-			scrollToTopBtn.classList.add('visible');
-		} else {
-			scrollToTopBtn.classList.remove('visible');
-		}
-	});
-
-	scrollToTopBtn.addEventListener('click', function () {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth'
 		});
 	});
 
@@ -185,55 +458,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	});
 
-	// Pagination functionality (if needed in future)
-	function createPagination(totalItems, itemsPerPage = 6) {
-		const totalPages = Math.ceil(totalItems / itemsPerPage);
-		const paginationContainer = document.querySelector('.pagination');
-
-		if (totalPages <= 1) return;
-
-		paginationContainer.innerHTML = '';
-
-		for (let i = 1; i <= totalPages; i++) {
-			const button = document.createElement('button');
-			button.textContent = i;
-			button.classList.add('pagination-btn');
-			if (i === 1) button.classList.add('active');
-
-			button.addEventListener('click', function () {
-				// Remove active class from all buttons
-				document.querySelectorAll('.pagination-btn').forEach(btn => {
-					btn.classList.remove('active');
-				});
-				// Add active class to clicked button
-				this.classList.add('active');
-
-				// Show/hide products based on page
-				const startIndex = (i - 1) * itemsPerPage;
-				const endIndex = startIndex + itemsPerPage;
-
-				productCards.forEach((card, index) => {
-					if (index >= startIndex && index < endIndex) {
-						card.style.display = 'block';
-					} else {
-						card.style.display = 'none';
-					}
-				});
-
-				// Scroll to products section
-				document.querySelector('.all-products').scrollIntoView({
-					behavior: 'smooth',
-					block: 'start'
-				});
-			});
-
-			paginationContainer.appendChild(button);
-		}
-	}
-
-	// Initialize pagination if there are many products
-	createPagination(productCards.length, 6);
-
 	// Add ripple effect to buttons
 	function createRipple(event) {
 		const button = event.currentTarget;
@@ -285,7 +509,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		button.addEventListener('click', createRipple);
 	});
 
-	// Mobile menu toggle (if needed for responsive design)
+	// Mobile menu toggle
 	const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 	if (mobileMenuToggle) {
 		mobileMenuToggle.style.display = '';
@@ -322,21 +546,38 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		});
 	}
+});
 
-	// Performance optimization: Debounce search function
-	function debounce(func, wait) {
-		let timeout;
-		return function executedFunction(...args) {
-			const later = () => {
-				clearTimeout(timeout);
-				func(...args);
-			};
-			clearTimeout(timeout);
-			timeout = setTimeout(later, wait);
-		};
-	}
+// Loading animation for page transitions
+function initPageTransitions() {
+	document.querySelectorAll('a[href*=".html"]').forEach(link => {
+		link.addEventListener('click', function (e) {
+			const href = this.getAttribute('href');
 
-	// Apply debounce to search
-	const debouncedSearch = debounce(performSearch, 300);
-	searchInput.addEventListener('input', debouncedSearch);
+			// Only apply to internal links
+			if (!href.startsWith('http') && !href.startsWith('mailto')) {
+				e.preventDefault();
+
+				// Create loading overlay
+				const overlay = document.createElement('div');
+				overlay.className = 'fixed inset-0 bg-cream/90 backdrop-blur-sm z-50 flex items-center justify-center transition-opacity duration-300';
+				overlay.innerHTML = `
+                    <div class="text-center">
+                        <div class="animate-spin w-12 h-12 border-4 border-sage border-t-transparent rounded-full mx-auto mb-4"></div>
+                        <p class="text-sage font-medium">Loading...</p>
+                    </div>
+                `;
+
+				document.body.appendChild(overlay);
+
+				// Navigate after brief delay
+				setTimeout(() => {
+					window.location.href = href;
+				}, 250);
+			}
+		});
+	});
+}
+document.addEventListener('DOMContentLoaded', function () {
+	initPageTransitions();
 });

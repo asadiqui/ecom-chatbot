@@ -5,12 +5,14 @@ tailwind.config = {
                 primary: '#606c38',
                 'primary': '#606c38',
 				'forest-green': '#606c38',
+                'sage': '#606c38',
 				secondary: '#fefae0',
                 'secondary': '#fefae0',
 				'cream': '#fefae0',
 				accent: '#bc6c25',
                 'accent': '#bc6c25',
 				'burnt-orange': '#bc6c25',
+                'rust': '#bc6c25',
 				'primary-dark': '#4a5429',
 				'accent-dark': '#9d5620',
 			},
@@ -76,7 +78,7 @@ function initSearchInput() {
         const value = this.value.trim();
         if (value.length > 2) {
             // In a real app, you would show search suggestions here
-            console.log(`Searching for: ${value}`);
+            // console.log(`Searching for: ${value}`);
         }
     });
 }
@@ -288,7 +290,7 @@ function initPageTransitions() {
                 // Navigate after brief delay
                 setTimeout(() => {
                     window.location.href = href;
-                }, 500);
+                }, 250);
             }
         });
     });
@@ -404,14 +406,5 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('opacity-100', 'transition-opacity', 'duration-1000');
     }, 100);
     
-    console.log('🌸 Zehrat Bladi 404 page loaded with modern enhancements!');
+    // console.log('🌸 Zehrat Bladi 404 page loaded with modern enhancements!');
 });
-
-// Service worker registration for performance (optional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => console.log('SW registered'))
-            .catch(registrationError => console.log('SW registration failed'));
-    });
-}
